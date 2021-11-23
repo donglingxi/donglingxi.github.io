@@ -9,8 +9,7 @@
 
     <!--Description-->
     
-        <meta name="description" content="早些时候, 读阮一峰的一篇关于sourceMap的文章, 我还记得那个时候, 刚刚接触webpack吧, 头发还很黑, 接触一个webpack的属性devtool, 那个时候的webpack汉化还不是很好, 看着一个个eval, cheap-eval-source-map等等的属性, 一头雾水, 半知半解.
-现在回头再看webpack的官方文档, 恍然大悟, 原来是真的不懂!">
+        <meta name="description" content="早些时候, 读阮一峰的一篇关于sourceMap的文章, 我还记得那个时候, 刚刚接触webpack吧, 头发还很黑, 接触一个webpack的属性devtool, 那个时候的webpack汉化还不是很好, 看着一个个eval, cheap-eval-source-map等等的属性, 一头雾水, 半知半解.">
     
 
     <!--Author-->
@@ -79,11 +78,24 @@
                     <!-- Post Main Content -->
                     <div class="post-content col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                         <p>早些时候, 读阮一峰的一篇关于sourceMap的文章, 我还记得那个时候, 刚刚接触webpack吧, 头发还很黑, 接触一个webpack的属性devtool, 那个时候的webpack汉化还不是很好, 看着一个个eval, cheap-eval-source-map等等的属性, 一头雾水, 半知半解.</p>
-<p>现在回头再看webpack的官方文档, 恍然大悟, 原来是真的不懂!</p>
 <span id="more"></span>
 
 <h2 id="webpack的devtool属性"><a href="#webpack的devtool属性" class="headerlink" title="webpack的devtool属性"></a>webpack的devtool属性</h2><p>我们用webpack打包, 生成的隐射文件一般有几种方式：</p>
-<p>1.eval<br>2.cheap-eval-source-map<br>3.cheap-module-eval-source-map<br>4.eval-source-map<br>5.cheap-source-map<br>6.cheap-module-source-map<br>7.inline-cheap-source-map<br>8.inline-cheap-module-source-map<br>9.source-map<br>10.inline-source-map<br>11.hidden-source-map<br>12.nosources-source-map<br>罗列了这么多的选项, 但是其中的关键字, 其实可以归纳为以下几个<br>eval, 使用eval函数包裹整个模块, 并且在文件开始或末尾添加// sourceUrl=xxx的方式.这种方式也可以生成sourceMap, 但是实现是基于浏览器的runtime的, 也就是说我们如果拿到报错的信息, 但是却拿不到source map的文件, 很难去做错误回溯, 同时因为隐射的是转译后的代码, error trace的行号是不准确的, 同时source map的实现基于浏览器, 兼容性和一致性不敢保证, 在生产环境中一般不会使用.</p>
+<ul>
+<li>eval</li>
+<li>cheap-eval-source-map</li>
+<li>cheap-module-eval-source-map</li>
+<li>eval-source-map</li>
+<li>cheap-source-map</li>
+<li>cheap-module-source-map</li>
+<li>inline-cheap-source-map</li>
+<li>inline-cheap-module-source-map</li>
+<li>source-map</li>
+<li>inline-source-map</li>
+<li>hidden-source-map</li>
+<li>nosources-source-map</li>
+</ul>
+<p>罗列了这么多的选项, 但是其中的关键字, 其实可以归纳为以下几个<br>eval, 使用eval函数包裹整个模块, 并且在文件开始或末尾添加// sourceUrl=xxx的方式.这种方式也可以生成sourceMap, 但是实现是基于浏览器的runtime的, 也就是说我们如果拿到报错的信息, 但是却拿不到source map的文件, 很难去做错误回溯, 同时因为隐射的是转译后的代码, error trace的行号是不准确的, 同时source map的实现基于浏览器, 兼容性和一致性不敢保证, 在生产环境中一般不会使用.</p>
 <p>source-map,生成.map文件的格式, 并且在源文件结尾添加// sourceMappingUrl=xxx.map的方式. 这种方式可以根据堆栈信息去回溯错误, 并且准确定位行和列.</p>
 <p>cheap, 不在隐射文件中生成列对应信息, 因此只能定位行</p>
 <p>module, 不加载loader的sourceMap, 意味着如果有babel等loader, debugger的时候只能看到转译后的代码</p>
@@ -120,7 +132,7 @@
                                     
                                                 
 
-<a href="/categories/Tool/">Tool</a>
+<a href="/categories/Webpack/">Webpack</a>
 
                                                     
                                 </div>
