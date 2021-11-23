@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="早些时候, 读阮一峰的一篇关于sourceMap的文章, 我还记得那个时候, 刚刚接触webpack吧, 头发还很黑, 接触一个webpack的属性devtool, 那个时候的webpack汉化还不是很好, 看着一个个eval, cheap-eval-source-map等等的属性, 一头雾水, 半知半解.
+现在回头再看webpack的官方文档, 恍然大悟, 原来是真的不懂!">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!-- Title -->
+    
+    <title>SourceMap | Hexo</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Noto+Serif:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- jQuery -->
+    <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+
+    <!-- Content -->
+    <section class="article-container">
+    <!-- Back Home -->
+    <a class="nav-back" href="/">
+    <i class="fa fa-puzzle-piece"></i>
+</a>
+
+        <!-- Page Header -->
+        <header class="intro-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <div class="post-heading">
+                            <h1>
+                                SourceMap
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Post Content -->
+        <article>
+            <div class="container">
+                <div class="row">
+                    <!-- Post Main Content -->
+                    <div class="post-content col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <p>早些时候, 读阮一峰的一篇关于sourceMap的文章, 我还记得那个时候, 刚刚接触webpack吧, 头发还很黑, 接触一个webpack的属性devtool, 那个时候的webpack汉化还不是很好, 看着一个个eval, cheap-eval-source-map等等的属性, 一头雾水, 半知半解.</p>
+<p>现在回头再看webpack的官方文档, 恍然大悟, 原来是真的不懂!</p>
+<span id="more"></span>
+
+<h2 id="webpack的devtool属性"><a href="#webpack的devtool属性" class="headerlink" title="webpack的devtool属性"></a>webpack的devtool属性</h2><p>我们用webpack打包, 生成的隐射文件一般有几种方式：</p>
+<p>1.eval<br>2.cheap-eval-source-map<br>3.cheap-module-eval-source-map<br>4.eval-source-map<br>5.cheap-source-map<br>6.cheap-module-source-map<br>7.inline-cheap-source-map<br>8.inline-cheap-module-source-map<br>9.source-map<br>10.inline-source-map<br>11.hidden-source-map<br>12.nosources-source-map<br>罗列了这么多的选项, 但是其中的关键字, 其实可以归纳为以下几个<br>eval, 使用eval函数包裹整个模块, 并且在文件开始或末尾添加// sourceUrl=xxx的方式.这种方式也可以生成sourceMap, 但是实现是基于浏览器的runtime的, 也就是说我们如果拿到报错的信息, 但是却拿不到source map的文件, 很难去做错误回溯, 同时因为隐射的是转译后的代码, error trace的行号是不准确的, 同时source map的实现基于浏览器, 兼容性和一致性不敢保证, 在生产环境中一般不会使用.</p>
+<p>source-map,生成.map文件的格式, 并且在源文件结尾添加// sourceMappingUrl=xxx.map的方式. 这种方式可以根据堆栈信息去回溯错误, 并且准确定位行和列.</p>
+<p>cheap, 不在隐射文件中生成列对应信息, 因此只能定位行</p>
+<p>module, 不加载loader的sourceMap, 意味着如果有babel等loader, debugger的时候只能看到转译后的代码</p>
+<p>inline, 以dataUrl的方式把隐射的信息添加在文件的末尾, 这里inline属性是用在第三方工具使用, 不适合在开发环境或者生产环境使用, 原因是inline会把当前文件的sourceContent都包含进来, 在生成环境下,会加载模块文件的体积, 开发环境下rebuild的速度又慢.</p>
+<p>hidden, 意味着不会在源文件的末尾添加注释, 表明source map的文件地址, 同时webpack建议我们不上传source map源文件到服务器, 而是自己另外储存, 在堆栈检查工具中使用.</p>
+<p>nosources, 生成的source map没有源码信息,所以不会公布源代码, 但是会反编译文件名和目录结构, 这需要上传source map文件到服务器.</p>
+<p>在以上的几点介绍中, 或多或少的理解了各种的组合的作用和优势, 值得一说的eval的方式生成的source map和我们uglifyJs或者terser生成的不一样, eval的方法生成source map, 是需要使用eval()包含着运行的代码, 在代码的最后标注// sourceUrl=xxx.js, 这在浏览器内部的运行时</p>
+<h2 id="devtool-‘sourcemap’-的例子"><a href="#devtool-‘sourcemap’-的例子" class="headerlink" title="devtool: ‘sourcemap’ 的例子"></a>devtool: ‘sourcemap’ 的例子</h2><p>比如:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class A &#123;</span><br><span class="line">  constructor(a, b) &#123;</span><br><span class="line">    this.a = a;</span><br><span class="line">    this.b = b;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">debugger;</span><br><span class="line">throw Error(<span class="string">&#x27;test source map locate&#x27;</span>);</span><br><span class="line"><span class="built_in">let</span> a = new A(1, 2);</span><br><span class="line">console.log(a.a);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>devtool: ‘sourcemap’, 情况下,调试和错误堆栈结果:<br><img src="https://user-images.githubusercontent.com/13718019/67652470-0cf4a300-f980-11e9-9772-8d6fc08fa4e4.png" alt="百度图片--lena"><br><img src="https://user-images.githubusercontent.com/13718019/67652485-1716a180-f980-11e9-90ed-536fd74526ba.png" alt="百度图片--lena"></p>
+<h2 id="devtool-小结"><a href="#devtool-小结" class="headerlink" title="devtool 小结"></a>devtool 小结</h2><p>webpack 的devtool 属性差不多了, inline, 和nosource, hidden属性用的比较少, 就不细说了.</p>
+<p>生产环境推荐的使用source-map,特点不增加模块文件的大小, 同时error trace 准确,开发环境推荐使用cheap-module-eval-source-map, rebuild的速度快, 可以定位问题的位置, 追溯到未转译前的代码.</p>
+<p>可以完整的输出转移前代码的行号和列号, 但是代价是重复编译的速度比较慢.</p>
+<h2 id="认识source-map文件的内容"><a href="#认识source-map文件的内容" class="headerlink" title="认识source map文件的内容"></a>认识source map文件的内容</h2><p>打包出来的xxx.map文件的就是隐射到的文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> sourceCodeHere = xxxx</span><br><span class="line">//<span class="comment"># sourceMappingURL=0.787d0614320f767fc8d1.js.map</span></span><br><span class="line"></span><br><span class="line">//=&gt;0.787d0614320f767fc8d1.js.map</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;version&quot;</span>: 3,</span><br><span class="line">    <span class="string">&quot;sources&quot;</span>:[</span><br><span class="line">        <span class="string">&quot;webpack:///./node_modules/lodash/_listCacheHas.js&quot;</span>,</span><br><span class="line">        <span class="string">&quot;webpack:///./node_modules/sockjs-client/lib/transport/jsonp-polling    .js&quot;</span>,</span><br><span class="line">        <span class="string">&quot;webpack:///./node_modules/lodash/_cloneArrayBuffer.js&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;names&quot;</span>: [<span class="string">&quot;assocIndexOf&quot;</span>,</span><br><span class="line">                <span class="string">&quot;module&quot;</span>,</span><br><span class="line">                <span class="string">&quot;exports&quot;</span>],</span><br><span class="line">    <span class="string">&quot;mappings&quot;</span>: <span class="string">&quot;;gFAAA,IAAIA,EAAe,EAAQ,QAe3BC,EAAOC,QAJP,SAAsBC,...&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="map文件主要由几个字段组成"><a href="#map文件主要由几个字段组成" class="headerlink" title=".map文件主要由几个字段组成"></a>.map文件主要由几个字段组成</h2><p>version, 版本号, 经历3个版本, 大大减少映射文件的体积大小<br>file, 编译生成的文件<br>sourceRoot, 源文件相对路径<br>sources, 源文件列表<br>sourceContent, 源文件配置，当没有配置 source 的时候则使用这个<br>names, 变量名<br>mappings, 映射信息<br>mappings 里面储存的是隐射信息, 也是整个文件的大小的瓶颈, 如何设置一个合理和具有效率的编码去表示对源码的一对一隐射, 对整个map文件的大小具有重大的意义.</p>
+<p>对于mappings字段的解读</p>
+<p>每一行的映射片段块都会以分号 (;) 分隔开来<br>每个片段以逗号 (,) 分隔<br>每个片段是有 1,4 或 5 个变量长度的字段组成<br>一个片段具有5个字符<br><img src="https://user-images.githubusercontent.com/13718019/67662343-302e4b00-f99e-11e9-8a40-b3c5f109fca9.png" alt="百度图片--lena"><br>所以在这里引入MIDI文件的VLQ编码.</p>
+<h2 id="VLQ-编码"><a href="#VLQ-编码" class="headerlink" title="VLQ 编码"></a>VLQ 编码</h2><p>VLQ编码是Variable-length quantity 的全称,使用任意数量的8bit去表示一个较大的数值, 是一种变长的编码方式, 也就是说需要一个控制位去控制当前的编码单元是否是一个有效的整体,能够单独的表达一个数值.</p>
+<p>实际用到了source map的场景下, 就具体到使用任意数量的6bit去表示一个数值.<br>一个6bit的单元, 可以表示-15 ~ +15 的范围, 具体的字符隐射, 可以借用base64的编码字符集<br><img src="https://user-images.githubusercontent.com/13718019/67657689-77164380-f992-11e9-88bf-3735007b6cd8.png" alt="百度图片--lena"><br>base64的编码字符集隐射表.<br><img src="https://user-images.githubusercontent.com/13718019/67658102-95c90a00-f993-11e9-942f-659968855cd2.png" alt="百度图片--lena"><br>所以,隐射的情况下, 解读mappings的一个片段, 如QAAA, 在隐射表里面表示16,0,0,0.</p>
+<p>二进制010000,000000,000000,000000.</p>
+<p>第一步, 用二进制表示, 不够高位补0, 判断高位是否为1, 表示连续,这里为不连续<br>第二部, 二进制数是16, 最高位是0,其余是0,符号位正,所以, 取消符号位和最高位, 表示的数值: 8.<br>所以这里表示, 表示编译后文件的第8列, 位于源码的第0个文件, 第0行0列, names里面的第0个变量.</p>
+<h2 id="如何用VLQ编码表示-23"><a href="#如何用VLQ编码表示-23" class="headerlink" title="如何用VLQ编码表示-23"></a>如何用VLQ编码表示-23</h2><p>23 用数值表示 10111,</p>
+<p>第一步, VLQ的source map表示值的部分为4位, 需要拆分为0001 0111.<br>第二部, 从低开始编码 0111 =&gt; 1 0111 1, 连续符号位为1, 标志位为1, 表负数, 接着高位0001 =&gt; 000001, 连续符号位为0, 没有标志位.<br>最好查表得结果47,1=&gt;vB.</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://survivejs.com/webpack/building/source-maps/">https://survivejs.com/webpack/building/source-maps/</a><br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html">http://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html</a><br><a target="_blank" rel="noopener" href="http://www.alloyteam.com/2014/01/source-map-version-3-introduction/">http://www.alloyteam.com/2014/01/source-map-version-3-introduction/</a></p>
+
+
+                            <!-- Meta -->
+                            <div class="post-meta">
+                                <hr>
+                                <br>
+                                <div class="post-tags">
+                                    
+                                                
+
+<a href="/categories/Tool/">Tool</a>
+
+                                                    
+                                </div>
+                                <div class="post-date">
+                                    
+                                        2021-11-22
+                                    
+                                </div>
+                            </div>
+                    </div>
+
+                    <!-- Comments -->
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <!-- Disqus Comments -->
+
+
+                    </div>
+                </div>
+            </div>
+        </article>
+</section>
+
+<!-- Image viewer-->
+
+    <!-- Custom picture view-->
+    <link href="/css/viewer.min.css" rel="stylesheet" />
+    <script
+      src="/js/viewer.min.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    
+    <script type="text/javascript">
+      // set image viewer
+      Viewer.setDefaults({
+        zoomRatio: [0.5],
+        navbar: false,
+        toolbar: false,
+        button: false,
+        title: [2, (image, imageData) => `${image.alt}`],
+        show: function() {
+          this.viewer.zoomTo(0.5);
+        }
+      });
+      var imageList = document.getElementsByTagName("img");
+      Array.prototype.forEach.call(imageList, element => {
+        var viewer = new Viewer(element);
+      });
+    </script>
+
+    
+
+<!-- TOC -->
+
+    <aside id="article-toc" role="navigation" class="fixed">
+        <div id="article-toc-inner">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack%E7%9A%84devtool%E5%B1%9E%E6%80%A7"><span class="toc-text">webpack的devtool属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#devtool-%E2%80%98sourcemap%E2%80%99-%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-text">devtool: ‘sourcemap’ 的例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#devtool-%E5%B0%8F%E7%BB%93"><span class="toc-text">devtool 小结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86source-map%E6%96%87%E4%BB%B6%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-text">认识source map文件的内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#map%E6%96%87%E4%BB%B6%E4%B8%BB%E8%A6%81%E7%94%B1%E5%87%A0%E4%B8%AA%E5%AD%97%E6%AE%B5%E7%BB%84%E6%88%90"><span class="toc-text">.map文件主要由几个字段组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VLQ-%E7%BC%96%E7%A0%81"><span class="toc-text">VLQ 编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%94%A8VLQ%E7%BC%96%E7%A0%81%E8%A1%A8%E7%A4%BA-23"><span class="toc-text">如何用VLQ编码表示-23</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
+        </div>
+    </aside>
+
+    <!-- Scripts -->
+    <script type="text/javascript">
+    console.log("© zchen9 🙋 2015-" + new Date().getFullYear());
+</script>
+  
+    <!-- Google Analytics -->
+    
+
+    <!-- Service Worker -->
+    <!-- if using service worker -->
+
+    
+</body>
+
+</html>
