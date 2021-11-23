@@ -1,376 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-    <!-- favicon -->
-    
-        <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
-        <link rel="icon" href="/img/favicon.png" type="image/x-icon">
-    
-    <!-- locale -->
+<html lang="zh-Hans">
+
+<!-- Head tag -->
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!--Description-->
     
-    <meta name="description" content="This is a header.
-  This is the first list item.
-  This is the second list item.
+        <meta name="description" content="文章预览内容">
+    
 
-Here’s some example code:
-return shell_exec(&amp;quot;echo $input | $mar">
-    <meta name="keywords" content="">
-    <meta name="author" content="John Doe">
-    <!-- og:description -->
-    <meta name="og:description" content="This is a header.
-  This is the first list item.
-  This is the second list item.
-
-Here’s some example code:
-return shell_exec(&amp;quot;echo $input | $mar">
-    <!-- color -->
-    <meta name="theme-color" content="#ffffff">
     <!--Author-->
     
         <meta name="author" content="John Doe">
     
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="newpapername"/>
-    
-    <!--Open Graph type-->
-    <meta property="og:type" content="website"/>
-    <!--Page Cover-->
-    
-    <meta property="og:image" content="http://example.com/img/450x450/seira.jpg">
-    <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Hexo"/>
+
     <!-- Title -->
     
-    <title>newpapername - Hexo</title>
-    <!-- framework CSS -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" rel="stylesheet">    
-    <!-- google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    
-<link rel="stylesheet" href="/css/index.css">
+    <title>Hello XState | Hexo</title>
 
-    
-<link rel="stylesheet" href="/css/component.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Custom CSS -->
     
-<script src="/js/modernizr.custom.js"></script>
+<link rel="stylesheet" href="/css/style.css">
 
-    <!-- jquery -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+
+    <!-- Custom Fonts -->
+    <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Noto+Serif:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- jQuery -->
+    <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 <meta name="generator" content="Hexo 5.4.0"></head>
-    <body class="has-background-light">
-        <div id="loader-wrapper">
-            <div id="loader"></div>
-            <div class="loader-section"></div>
-        </div>
-        <nav class="navbar is-fixed-top is-white has-bg-shadow" role="navigation" aria-label="main navigation">
-    <div class="container">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-                <img src="/img/logo2.svg" height="28" alt="logo">
-            </a>
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                
-                    <a class="navbar-item" href="/about">
-                    <!-- <span class="icon"><i class="fas fa-about"> </i></span> -->
-                    &nbsp;About </a>
-                
-                    <a class="navbar-item" href="/friends">
-                    <!-- <span class="icon"><i class="fas fa-friends"> </i></span> -->
-                    &nbsp;Friends </a>
-                
-                
-            </div>
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="field is-grouped">
-                        <p class="control">
-                            
-                            
-                                <a class="button has-transparent-bg" target="_blank" rel="noopener" href="https://gitlab.com/sira313"><span class="icon"> <i class="fab fa-gitlab"></i> </span></a>
-                            
-                            
-                            
-                                <a class="button has-transparent-bg" target="_blank" rel="noopener" href="https://twitter.com/aflasio"><span class="icon"> <i class="fab fa-twitter"></i> </span></a>
-                            
-                            
-                            
-                                <a class="button has-transparent-bg" target="_blank" rel="noopener" href="https://facebook.com/aflasio.art"><span class="icon"> <i class="fab fa-facebook"></i> </span></a>
-                            
-                            
-                            
-                                <a class="button has-transparent-bg" href="mailto:sira.argia@gmail.com" title="email"> <span class="icon"><i class="fas fa-envelope"></i> </span></a>
-                            
-                            
-                            
-                                <a class="button has-transparent-bg" target="_blank" rel="noopener" href="https://t.me/aflasio"><span class="icon"> <i class="fab fa-telegram"></i> </span></a>
-                            
-                            
+
+<body>
+
+    <!-- Content -->
+    <section class="article-container">
+    <!-- Back Home -->
+    <a class="nav-back" href="/">
+    <i class="fa fa-puzzle-piece"></i>
+</a>
+
+        <!-- Page Header -->
+        <header class="intro-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <div class="post-heading">
+                            <h1>
+                                Hello XState
+                            </h1>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</nav>
-        <div class="container">
-            <section class="hero is-fullheight" style="margin-top:3.25rem">
-</div>
-  <div class="hero-body" style="padding-bottom: 0">
-    <div class="box box-mobile has-box-shadow" style="width: 100%">
-      <div class="media" style="margin-bottom:1em">
-        <figure class="media-left">
-          <p class="image is-48x48">
-            <img class="is-rounded" src="/img/450x450/seira.jpg" alt="profile pic">
-          </p>
-        </figure>
-        <div class="media-content">
-          <div class="content" style="margin-top:5px">
-            <h1 class="title is-6">newpapername</h1>
-            <h2 class="subtitle is-size-7 has-text-grey">
-              <span class="icon is-small"><i class="fas fa-calendar"></i></span> 2021-06-10
-              &nbsp;
-              <span class="icon is-small"><i class="fas fa-user"></i></span> John Doe
-            </h2>
-          </div>
-        </div>
-      </div>
-      <div class="content">
-        <!-- Gallery -->
-        
-        <div class="post">
-          <blockquote>
-<h2 id="This-is-a-header"><a href="#This-is-a-header" class="headerlink" title="This is a header."></a>This is a header.</h2><ol>
-<li>  This is the first list item.</li>
-<li>  This is the second list item.</li>
-</ol>
-<p>Here’s some example code:</p>
-<pre><code>return shell_exec(&quot;echo $input | $markdown_script&quot;);
-</code></pre>
-</blockquote>
-<ul>
-<li>  Red</li>
-<li>  Green</li>
-<li>  Blue</li>
-</ul>
-<ul>
-<li>  Red</li>
-<li>  Green</li>
-<li>  Blue</li>
-</ul>
-<ol>
-<li> Bird</li>
-<li> McHale</li>
-<li> Parish</li>
-</ol>
-<ol>
-<li>Bird</li>
-<li>McHale</li>
-<li>Parish</li>
-</ol>
+        </header>
 
-<ol>
-<li> Bird</li>
-<li> McHale</li>
-<li> Parish</li>
-</ol>
-<ul>
-<li><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<br>  Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,<br>  viverra nec, fringilla in, laoreet vitae, risus.</p>
-</li>
-<li><p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit.<br>  Suspendisse id sem consectetuer libero luctus adipiscing.</p>
-</li>
-<li><p>  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<br>Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,<br>viverra nec, fringilla in, laoreet vitae, risus.</p>
-</li>
-<li><p>  Donec sit amet nisl. Aliquam semper ipsum sit amet velit.<br>Suspendisse id sem consectetuer libero luctus adipiscing.</p>
-</li>
-<li><p>  Bird</p>
-</li>
-<li><p>  Magic</p>
-</li>
-<li><p>  Bird</p>
-</li>
-<li><p>  Magic</p>
-</li>
-<li><p>A list item with a code block:</p>
-<pre><code>  &lt;code goes here&gt;
-</code></pre>
-</li>
-</ul>
-<ol start="1986">
-<li>What a great season. </li>
-</ol>
-<p>1986. What a great season.</p>
-<p>This is a normal paragraph:</p>
-<pre><code>This is a code block.
-</code></pre>
-<p>Here is an example of AppleScript:</p>
-<pre><code>tell application &quot;Foo&quot;
-    beep
-end tell
-</code></pre>
-<p>123</p>
-<pre><code>&lt;div class=&quot;footer&quot;&gt;
-    &amp;copy; 2004 Foo Corporation
-&lt;/div&gt;
-</code></pre>
-<hr>
-<hr>
-<hr>
-<hr>
-<hr>
-<p>This is <a href="http://example.com/" title="Title">
-an example</a> inline link.</p>
+        <!-- Post Content -->
+        <article>
+            <div class="container">
+                <div class="row">
+                    <!-- Post Main Content -->
+                    <div class="post-content col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <p>文章预览内容</p>
+<span id="more"></span>
 
-<p><a target="_blank" rel="noopener" href="http://example.net/">This link</a> has no
-title attribute.</p>
-
-<p>See my <a href="/about/">About</a> page for details.</p>
-<p>This is <a href="http://example.com/" title="Optional Title Here1">an example</a> reference-style link.</p>
-<p>Visit <a target="_blank" rel="noopener" href="http://daringfireball.net/">Daring Fireball</a> for more information.</p>
-<p><em>single asterisks</em></p>
-<p><em>single underscores</em></p>
-<p><strong>double asterisks</strong></p>
-<p><strong>double underscores</strong></p>
-<p>un<em>frigging</em>believable</p>
-<p>*this text is surrounded by literal asterisks*</p>
-<p>Use the <code>printf()</code> function.</p>
-<p><code>There is a literal backtick (`) here.</code></p>
-<p>A single backtick in a code span: <code>`</code></p>
-<p>A backtick-delimited string in a code span: <code>`foo`</code></p>
-<p><img src="/path/to/img.jpg" alt="Alt text"></p>
-<p><img src="/path/to/img.jpg" alt="Alt text" title="Optional title"></p>
-<p><a href="http://example.com/">http://example.com/</a><br><a href="mailto:&#x61;&#x64;&#x64;&#x72;&#x65;&#x73;&#115;&#x40;&#x65;&#120;&#97;&#x6d;&#112;&#108;&#101;&#x2e;&#x63;&#111;&#x6d;">&#x61;&#x64;&#x64;&#x72;&#x65;&#x73;&#115;&#x40;&#x65;&#120;&#97;&#x6d;&#112;&#108;&#101;&#x2e;&#x63;&#111;&#x6d;</a></p>
-<p>*literal asterisks*</p>
-<p>\   backslash<br>`   backtick</p>
-<ul>
-<li>  asterisk<br>_   underscore<br>{}  curly braces<br>[]  square brackets<br>()  parentheses<h1 id="hash-mark"><a href="#hash-mark" class="headerlink" title="hash mark"></a>hash mark</h1></li>
-</ul>
-<ul>
-<li>  plus sign</li>
-</ul>
-<ul>
-<li>  minus sign (hyphen)<br>.   dot<br>!   exclamation mark</li>
-</ul>
-
-        </div>
-        <!-- Tags -->
-        <div class="tags" style="margin-top: 0.6em;">
-           
-        </div>
-        
-<nav class="pagination is-centered buttons" role="navigation" aria-label="pagination" style="margin-top:10px;justify-content: space-between">
-  
-    <a class="pagination-previous button is-light" title="This is the latest post" disabled><span class="icon"><i class="fas fa-angle-left"></i></i></span>&nbsp;Latest</a>
-  
-  
-  <a href="/2021/06/09/hello-world/" data-title="Hello World" class="pagination-next button is-light">Earlier&nbsp;<span class="icon"><i class="fas fa-angle-right"></i></span></a>
-  
- </nav> 
-   
-      </div>      
-    </div>       
-  </div>
-  <!-- comments -->
-  
+<p>文章正文在此</p>
 
 
+                            <!-- Meta -->
+                            <div class="post-meta">
+                                <hr>
+                                <br>
+                                <div class="post-tags">
+                                    
+                                                
+
+<a href="/categories/状态管理/">状态管理</a>
+
+                                                    
+                                </div>
+                                <div class="post-date">
+                                    
+                                        2021-06-10
+                                    
+                                </div>
+                            </div>
+                    </div>
+
+                    <!-- Comments -->
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <!-- Disqus Comments -->
 
 
-    <div class="hero-foot">
-        <div class="box box-mobile has-box-shadow" style="width: 100%">
-            <div id="valine"></div>
-            <!-- valine comment -->
-            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-            <script>
-            new Valine({
-                el: '#valine' ,
-                notify:false,
-                verify:false,
-                app_id: '6jbQfaaH3EJezmsqw43NCcNa-gzGzoHsz',
-                app_key: '5AsBAiusJURpbNDHTP4LHwA6',
-                placeholder: 'Leave comment',
-                path:window.location.pathname,
-                lang:'en',
-                avatar:'mm' 
-            });
-            </script>
-        </div>
-    </div>
-  
+                    </div>
+                </div>
+            </div>
+        </article>
 </section>
-        </div>
-    </body>
-    <footer>
-        
-<div class="footer">
-    <div class="content has-text-centered">
-      <p>
-        &copy; 2018-2019 <a href="/">Hexo</a><br>
-        Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> and <a target="_blank" rel="noopener" href="https://bulma.io">Bulma</a><br>
-        Theme source code is on <a target="_blank" rel="noopener" href="https://github.com/sira313/hexo-theme-griddy">Github</a>
-      </p>
-    </div>
-</div>
-    </footer>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<!-- Gallery -->
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
-<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-<!-- masonry for gallery -->
 
-<script src="/js/app.js"></script>
+<!-- Image viewer-->
 
-
-<script src="/js/masonry.pkgd.min.js"></script>
-
-
-<script src="/js/imagesloaded.js"></script>
-
-
-<script src="/js/classie.js"></script>
-
-
-<script src="/js/AnimOnScroll.js"></script>
-
-
-<script src="/js/AnimOnScroll.js"></script>
-
-<script>
- var grid = document.getElementById( 'grid' );
- if (grid) {
-	new AnimOnScroll(grid, {
-		minDuration : 0.4,
-		maxDuration : 0.7,
-		viewportFactor : 0.2
-	} );
-}
-</script>
-<!-- fontawesome -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/js/all.min.js"></script>
-<!-- comments -->
-
-
-
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-128493937-1', 'auto');
-        ga('send', 'pageview');
+    <!-- Custom picture view-->
+    <link href="/css/viewer.min.css" rel="stylesheet" />
+    <script
+      src="/js/viewer.min.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    
+    <script type="text/javascript">
+      // set image viewer
+      Viewer.setDefaults({
+        zoomRatio: [0.5],
+        navbar: false,
+        toolbar: false,
+        button: false,
+        title: [2, (image, imageData) => `${image.alt}`],
+        show: function() {
+          this.viewer.zoomTo(0.5);
+        }
+      });
+      var imageList = document.getElementsByTagName("img");
+      Array.prototype.forEach.call(imageList, element => {
+        var viewer = new Viewer(element);
+      });
     </script>
+
+    
+
+<!-- TOC -->
+
+    <aside id="article-toc" role="navigation" class="fixed">
+        <div id="article-toc-inner">
+            
+        </div>
+    </aside>
+
+    <!-- Scripts -->
+    <script type="text/javascript">
+    console.log("© zchen9 🙋 2015-" + new Date().getFullYear());
+</script>
+  
+    <!-- Google Analytics -->
+    
+
+    <!-- Service Worker -->
+    <!-- if using service worker -->
+
+    
+</body>
 
 </html>
