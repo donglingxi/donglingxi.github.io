@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="状态管理的天花板，没有之一。">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!-- Title -->
+    
+    <title>XState | Hexo</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Noto+Serif:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- jQuery -->
+    <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+
+    <!-- Content -->
+    <section class="article-container">
+    <!-- Back Home -->
+    <a class="nav-back" href="/">
+    <i class="fa fa-puzzle-piece"></i>
+</a>
+
+        <!-- Page Header -->
+        <header class="intro-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <div class="post-heading">
+                            <h1>
+                                XState
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Post Content -->
+        <article>
+            <div class="container">
+                <div class="row">
+                    <!-- Post Main Content -->
+                    <div class="post-content col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <p>状态管理的天花板，没有之一。</p>
+<span id="more"></span>
+
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>XState 是一个用于创建、解释和执行有限状态机和状态图，以及管理这些机器作为参与者的调用的库。</p>
+<blockquote>
+<p>简言之，它是状态机！</p>
+</blockquote>
+<h3 id="有限状态机"><a href="#有限状态机" class="headerlink" title="有限状态机"></a>有限状态机</h3><p>有限状态机是一种数学计算模型，它描述了在任何给定时间只能处于一种状态的系统的行为。例如，假设您可以由具有有限数量 (2) 个状态的状态机表示：asleep或awake。在任何时候，你要么asleep或awake。这是不可能的，你既asleep和awake在同一时间，这是不可能的，你既不是asleep也不是awake。</p>
+<p>形式上，有限状态机有五个部分：</p>
+<ul>
+<li>有限数量的状态</li>
+<li>有限数量的事件</li>
+<li>在初始状态</li>
+<li>在给定当前状态和事件的情况下确定下一个状态的转换函数</li>
+<li>一组（可能是空的）最终状态</li>
+</ul>
+<p>状态是指由状态机建模的系统的某种有限的、定性的“模式”或“状态”，并不描述与该系统相关的所有（可能是无限的）数据。</p>
+<h3 id="状态图"><a href="#状态图" class="headerlink" title="状态图"></a>状态图</h3><p>状态图是一种用于对有状态的反应式系统进行建模的形式主义。计算机科学家大卫·哈雷尔 (David Harel) 在其 1987 年的论文<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/0167642387900359/pdf">Statecharts: A Visual Formalism for Complex Systems</a>中将这种形式化描述为状态机的扩展 （打开新窗口）. 一些扩展包括：</p>
+<ul>
+<li>受保护的转换</li>
+<li>动作（进入、退出、转换）</li>
+<li>扩展状态（上下文）</li>
+<li>正交（平行）状态</li>
+<li>分层（嵌套）状态</li>
+<li>历史</li>
+</ul>
+<h3 id="演员模型"><a href="#演员模型" class="headerlink" title="演员模型"></a>演员模型</h3><p>Actor 模型是另一个非常古老的数学计算模型，它与状态机配合得很好。它指出，一切都是一个“演员”，可以做三件事：</p>
+<ul>
+<li>接收消息</li>
+<li>向其他演员发送消息</li>
+<li>对它收到的消息（它的行为）做一些事情，例如：<ul>
+<li>改变它的本地状态</li>
+<li>向其他参与者发送消息</li>
+<li>产生新的演员</li>
+</ul>
+</li>
+</ul>
+<p>未完待续…</p>
+
+
+                            <!-- Meta -->
+                            <div class="post-meta">
+                                <hr>
+                                <br>
+                                <div class="post-tags">
+                                    
+                                                
+
+<a href="/categories/Middleware/">Middleware</a>
+
+                                                    
+                                </div>
+                                <div class="post-date">
+                                    
+                                        2021-12-10
+                                    
+                                </div>
+                            </div>
+                    </div>
+
+                    <!-- Comments -->
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <!-- Disqus Comments -->
+
+
+                    </div>
+                </div>
+            </div>
+        </article>
+</section>
+
+<!-- Image viewer-->
+
+    <!-- Custom picture view-->
+    <link href="/css/viewer.min.css" rel="stylesheet" />
+    <script
+      src="/js/viewer.min.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    
+    <script type="text/javascript">
+      // set image viewer
+      Viewer.setDefaults({
+        zoomRatio: [0.5],
+        navbar: false,
+        toolbar: false,
+        button: false,
+        title: [2, (image, imageData) => `${image.alt}`],
+        show: function() {
+          this.viewer.zoomTo(0.5);
+        }
+      });
+      var imageList = document.getElementsByTagName("img");
+      Array.prototype.forEach.call(imageList, element => {
+        var viewer = new Viewer(element);
+      });
+    </script>
+
+    
+
+<!-- TOC -->
+
+    <aside id="article-toc" role="navigation" class="fixed">
+        <div id="article-toc-inner">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="toc-text">有限状态机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E5%9B%BE"><span class="toc-text">状态图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%94%E5%91%98%E6%A8%A1%E5%9E%8B"><span class="toc-text">演员模型</span></a></li></ol>
+        </div>
+    </aside>
+
+    <!-- Scripts -->
+    <script type="text/javascript">
+    console.log("© zchen9 🙋 2015-" + new Date().getFullYear());
+</script>
+  
+    <!-- Google Analytics -->
+    
+
+    <!-- Service Worker -->
+    <!-- if using service worker -->
+
+    
+</body>
+
+</html>
